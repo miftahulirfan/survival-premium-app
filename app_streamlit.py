@@ -27,7 +27,7 @@ def calculate_premium(patient_data, horizon_days=1825,
     return survival_prob, death_risk, premium
 
 # Streamlit layout
-st.title("🩺 Survival Premium Calculator Hemodialisa Patient")
+st.title("🩺 Survival Premium Calculator Hemodialysis Patients")
 st.write("Aplikasi ini menghitung probabilitas bertahan hidup dan premi asuransi berdasarkan data pasien.")
 
 # Input pasien
