@@ -240,19 +240,41 @@ if st.button("Hitung Premi dan Risiko"):
         st.subheader("📌 Interpretasi Hasil Simulasi Monte Carlo")
         st.write(interpret_montecarlo(simulated_premiums))
 
-        # ✅ Export hasil ke CSV
-        st.subheader("⬇️ Ekspor Data")
+        # =========================
+        # Ekspor hasil Survival
+        # =========================
+        st.subheader("⬇️ Ekspor Data Survival")
+
+        # Buat DataFrame hasil survival function
         result_df = pd.DataFrame({
             "Horizon (hari)": surv_func.index,
             "Survival Probability": surv_func.values.flatten()
         })
-        csv1 = result_df.to_csv(index=False).encode('utf-8')
+
+        # Export CSV
+        csv = result_df.to_csv(index=False).encode('utf-8')
         st.download_button(
-            "Unduh Data Survival Function (CSV)",
-            data=csv1,
+            "Unduh Data Survival (CSV)",
+            data=csv,
             file_name="hasil_survival.csv",
             mime="text/csv"
         )
+
+        # Export XLSX
+        import io
+        output = io.BytesIO()
+        with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
+            result_df.to_excel(writer, index=False, sheet_name="SurvivalData")
+        xlsx_data = output.getvalue()
+
+        st.download_button(
+            label="Unduh Data Survival (XLSX)",
+            data=xlsx_data,
+            file_name="hasil_survival.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+
+
 
         montecarlo_df = pd.DataFrame({
             "Simulasi ke-": np.arange(1, len(simulated_premiums)+1),
