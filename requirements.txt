@@ -3,3 +3,6 @@ lifelines
 pandas
 numpy
 scikit-learn
+matplotlib
+gunicorn
+plotly
