@@ -141,7 +141,7 @@ def interpret_montecarlo(simulated_premiums):
     return interpretasi
 
 # Streamlit layout
-st.title("🩺 Survival Premium Calculator Hemodialysis Patients")
+st.title("🩺 Survival Premium Calculator Hemodialisa Patient")
 st.write("Aplikasi ini menghitung probabilitas bertahan hidup, risiko klaim, dan premi asuransi berdasarkan data pasien, dengan interpretasi naratif & simulasi Monte Carlo.")
 
 # Input pasien
