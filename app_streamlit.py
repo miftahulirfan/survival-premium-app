@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 # Load model CoxPH
 with open("cox_model.pkl", "rb") as f:
@@ -140,7 +141,7 @@ def interpret_montecarlo(simulated_premiums):
     return interpretasi
 
 # Streamlit layout
-st.title("🩺 Survival Premium Calculator Hemodialisa Patient")
+st.title("🩺 Survival Premium Calculator Hemodialysis Patients")
 st.write("Aplikasi ini menghitung probabilitas bertahan hidup, risiko klaim, dan premi asuransi berdasarkan data pasien, dengan interpretasi naratif & simulasi Monte Carlo.")
 
 # Input pasien
